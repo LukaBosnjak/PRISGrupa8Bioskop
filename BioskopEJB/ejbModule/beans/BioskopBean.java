@@ -30,17 +30,17 @@ public class BioskopBean implements BioskopBeanRemote {
     }
 
 	@Override
-	public boolean login(String username, String password) {
+	public Korisnik login(String username, String password) {
 		try{
-    		Query q=em.createQuery("SELECT k FROM Korinik k WHERE k.username=:username AND k.password=:password");
+    		Query q=em.createQuery("SELECT k FROM Korisnik k WHERE k.username=:username AND k.password=:password");
     		q.setParameter("username", username);
     		q.setParameter("password", password);
     		ulogovan= (Korisnik) q.getSingleResult();
     		
-    		return true;
+    		return ulogovan;
     	}catch(Exception ee){
     		ee.printStackTrace();
-    		return false;
+    		return null;
     	}
 		
 	}
