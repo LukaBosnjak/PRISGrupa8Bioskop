@@ -6,8 +6,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import model.Film;
+import model.Korisnik;
 import model.Projekcija;
 import model.Sala;
 
@@ -40,6 +42,36 @@ public class AdministratorBean implements AdministratorBeanRemote {
 		}catch(Exception e){
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	@Override
+	public Film getFilmZaNaziv(String naziv) {
+		try {
+			Query q = em.createQuery("SELECT f FROM Film f WHERE f.naziv=:n");
+			q.setParameter("n", naziv);
+			Film f;
+    			f = (Film) q.getSingleResult();
+    		
+    			return f;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Sala getSalaZaBrSale(int brSale) {
+		try {
+			Query q = em.createQuery("SELECT s FROM Sala s WHERE s.brSale=:br");
+			q.setParameter("br", brSale);
+			Sala s;
+    			s = (Sala) q.getSingleResult();
+    		
+    			return s;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

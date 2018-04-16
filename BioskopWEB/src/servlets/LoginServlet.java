@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
 		}
 		
-		if (ulogovan.getRola().equalsIgnoreCase("koirisnik")) {
+		if (ulogovan.getRola().equalsIgnoreCase("korisnik")) {
 			request.getRequestDispatcher("/userPage.jsp").forward(request, response);
 		}
 		//request.getRequestDispatcher("/indexLoggedIn.jsp").forward(request, response);

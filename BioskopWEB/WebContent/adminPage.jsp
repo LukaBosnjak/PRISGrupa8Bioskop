@@ -8,5 +8,7 @@
 </head>
 <body>
 
+	<a href="/BioskopWEB/unosRepertoaraPage.jsp">Unos repertoara</a>
+
 </body>
 </html>
