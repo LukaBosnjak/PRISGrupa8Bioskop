@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,19 +14,19 @@ import beans.FilmoviBeanRemote;
 import model.Film;
 
 /**
- * Servlet implementation class FilmoviServlet
+ * Servlet implementation class FilmoviPoKategorijamaServlet
  */
-@WebServlet("/FilmoviServlet")
-public class FilmoviServlet extends HttpServlet {
+@WebServlet("/FilmoviPoKategorijamaServlet")
+public class FilmoviPoKategorijamaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@EJB
-	private FilmoviBeanRemote fbr;
        
+	@EJB
+	FilmoviBeanRemote fbr;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FilmoviServlet() {
+    public FilmoviPoKategorijamaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +35,9 @@ public class FilmoviServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Film film = fbr.nadijFilm(1/*Integer.parseInt(request.getParameter("idFilma"))*/);
-		request.setAttribute("movieTrailer", film.getLinkTrejlera());
-		request.setAttribute("movieTitle", film.getNaziv());
-		request.setAttribute("roles", film.getUloge());
-		request.setAttribute("movieZanr", film.getZanr());
-		request.setAttribute("description", film.getOpis());
-		request.getRequestDispatcher("filmTmp.jsp").forward(request, response);
-		
+		List<Film> filmoviPoZanru = fbr.izlistajFilmovePoZanru(request.getParameter("zanr"));
+		request.setAttribute("filmoviPoKategoriji", filmoviPoZanru);
+		request.getRequestDispatcher("filmoviPoKategorijama.jsp").forward(request, response);
 	}
 
 	/**

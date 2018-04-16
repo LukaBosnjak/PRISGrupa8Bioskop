@@ -1,9 +1,6 @@
 package servlets;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

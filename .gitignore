@@ -1,3 +1,6 @@
 /.metadata/
 BioskopEAR/
 BioskopJPA/
+BioskopJPA/.classpath
+BioskopEJB/.classpath
+BioskopWEB/.classpath

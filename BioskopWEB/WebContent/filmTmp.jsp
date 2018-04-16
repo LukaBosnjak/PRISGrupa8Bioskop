@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="FilmStyle.css">
+<link rel="stylesheet" type="text/css" href="filmStyle.css">
 <title>Movie</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
   
   <div class="container">
     
-    <a href="#"><img src="${movieTrailer }" alt="cover" class="cover" /></a>
+    <a href="#"><img height="300" src="https://ia.media-imdb.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg" alt="cover" class="cover" /></a>
         
     <div class="hero">
             
@@ -22,7 +22,7 @@
       
         <div class="title1">${movieTitle }</div>
 
-        <div class="title2">${movieTitle2 }</div>    
+        <div class="title2">${roles }</div>    
         
         <fieldset class="rating">
 		    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -44,7 +44,8 @@
     <div class="description">
       
       <div class="column1">
-        <span class="tag">${movieZanr }</span>
+        <span class="tag">${movieZanr }</span><br>
+        <span class="tag">${movieTrailer }</span>
       </div> <!-- end column1 -->
       
       <div class="column2">

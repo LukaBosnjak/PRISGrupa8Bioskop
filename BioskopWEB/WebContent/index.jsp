@@ -9,7 +9,7 @@
 <body>
 
 	<a href="/BioskopWEB/register.jsp">Registracija</a><br>
-	<a href="/BioskopWEB/login.jsp">Log In</a>
-
+	<a href="/BioskopWEB/login.jsp">Log In</a><br>
+	<a href="/BioskopWEB/FilmoviServlet">Film</a>
 </body>
 </html>
