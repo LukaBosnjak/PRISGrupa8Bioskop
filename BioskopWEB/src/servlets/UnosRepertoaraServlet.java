@@ -19,7 +19,7 @@ import model.Sala;
 /**
  * Servlet implementation class unosRepertoaraServlet
  */
-@WebServlet("/unosRepertoaraServlet")
+@WebServlet("/UnosRepertoaraServlet")
 public class UnosRepertoaraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -77,7 +77,7 @@ public class UnosRepertoaraServlet extends HttpServlet {
 			request.getSession().setAttribute("porukaRepertoar", porukaRepertoar);
 		}
 		
-		request.getRequestDispatcher("/UnosRepertoaraPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/unosRepertoaraPage.jsp").forward(request, response);
 		
 	}
 
