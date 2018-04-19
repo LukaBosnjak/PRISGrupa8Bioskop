@@ -45,7 +45,7 @@
       
       <div class="column1">
         <span class="tag">${movieZanr }</span><br>
-        <span class="tag">${movieTrailer }</span>
+        <span class="tag"><a href="${movieTrailer }">${movieTrailer }</a></span>
       </div> <!-- end column1 -->
       
       <div class="column2">
