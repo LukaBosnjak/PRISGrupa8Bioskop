@@ -2,13 +2,18 @@ package beans;
 
 
 
+import java.util.Date;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.Film;
+import model.Komentar;
 import model.Korisnik;
+import model.Projekcija;
 
 
 /**
@@ -61,6 +66,22 @@ public class BioskopBean implements BioskopBeanRemote {
 			
 		}
 		
+	}
+
+	@Override
+	public Komentar komentarisi(Date datum, String tekst, Film film, Korisnik korisnik, Komentar kom) {
+		try{
+			Komentar k = new Komentar();
+			k.setDatum(datum);
+			k.setTekst(tekst);
+			k.setFilm(film);
+			k.setKomentar(kom);
+			em.persist(k);
+			return k;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
