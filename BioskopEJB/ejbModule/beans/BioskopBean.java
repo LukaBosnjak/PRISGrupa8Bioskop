@@ -76,9 +76,25 @@ public class BioskopBean implements BioskopBeanRemote {
 			k.setTekst(tekst);
 			k.setFilm(film);
 			k.setKomentar(kom);
+			k.setKorisnik(korisnik);
 			em.persist(k);
 			return k;
 		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override
+	public Film getFilmZaNaziv(String naziv) {
+		try {
+			Query q = em.createQuery("SELECT f FROM Film f WHERE f.naziv=:n");
+			q.setParameter("n", naziv);
+			Film f;
+    			f = (Film) q.getSingleResult();
+    		
+    			return f;
+		}catch(Exception e) {
 			e.printStackTrace();
 			return null;
 		}

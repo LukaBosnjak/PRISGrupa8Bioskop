@@ -8,10 +8,15 @@
 </head>
 <body>
 
-	<form>
-		<textarea rows="10" cols="10" name="komentar"></textarea>
+	<form action="/BioskopWEB/KomentarServlet" method="post">
+		Film: <input type="text" name="film"/><br>
+		Komentar: <textarea rows="10" cols="30" name="komentar"></textarea><br>
 		<input type="submit" value="Comment"/>
 	</form>
+	
+	<br>
+	
+	${porukaComment}
 
 </body>
 </html>

@@ -8,5 +8,9 @@
 </head>
 <body>
 
+	Ulogovani ste kao: ${user.username}<br>
+	
+	<a href="/BioskopWEB/commentForm.jsp">Komentarisi film</a>
+	
 </body>
 </html>
