@@ -40,6 +40,9 @@ public class FilmoviServlet extends HttpServlet {
 		request.setAttribute("roles", film.getUloge());
 		request.setAttribute("movieZanr", film.getZanr());
 		request.setAttribute("description", film.getOpis());
+		request.setAttribute("moviePoster", film.getPoster());
+		request.setAttribute("rate", film.getOcena());
+		request.getSession().setAttribute("movieId", film.getIdFilma());
 		request.getRequestDispatcher("filmTmp.jsp").forward(request, response);
 		
 	}
@@ -48,8 +51,8 @@ public class FilmoviServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int idFilm = (int) request.getSession().getAttribute("movieId");
+		fbr.upisiOcenuFilma(idFilm, Double.parseDouble(request.getParameter("rating")));
 	}
 
 }

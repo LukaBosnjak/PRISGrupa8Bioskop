@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import model.Film;
-import model.Korisnik;
 import model.Projekcija;
 import model.Sala;
 

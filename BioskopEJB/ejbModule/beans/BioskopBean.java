@@ -13,7 +13,6 @@ import javax.persistence.Query;
 import model.Film;
 import model.Komentar;
 import model.Korisnik;
-import model.Projekcija;
 
 
 /**

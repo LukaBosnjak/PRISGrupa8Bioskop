@@ -52,14 +52,13 @@ a:hover {
   overflow: hidden;
   top:0; left:0;
   background:red;
-  background: url("https://image.freepik.com/free-photo/border-from-cinema-stuff_23-2147698947.jpg");
-  background-size: cover;
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
   z-index:-1;
  
   transform: skewY(-2.2deg);
   transform-origin:0 0;
   
-  //chrome antialias fix
+  /*chrome antialias fix*/
   -webkit-backface-visibility: hidden; 
   
 }
@@ -173,7 +172,7 @@ a:hover {
   }
 }
 
-//star rating stuff via: https://codepen.io/jamesbarnett/pen/vlpkh/
+/*star rating stuff via: https://codepen.io/jamesbarnett/pen/vlpkh/*/
 
 fieldset, label { margin: 0; padding: 0; }
 
@@ -215,6 +214,7 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
+//tooltip stuff via: https://codepen.io/peiche/pen/JaftA
 
 a[data-tooltip] {
   position: relative;

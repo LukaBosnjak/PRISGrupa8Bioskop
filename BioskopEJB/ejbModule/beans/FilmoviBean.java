@@ -31,7 +31,26 @@ public class FilmoviBean implements FilmoviBeanRemote {
     }
     
     public List<Film> izlistajFilmovePoZanru(String zanr) {
-    	return em.createQuery("SELECT f FROM Film f where f.zanr=:zanr", Film.class).setParameter("zanr", zanr).getResultList();
+    	return em.createQuery("SELECT f FROM Film f WHERE f.zanr=:zanr", Film.class).setParameter("zanr", zanr).getResultList();
     }
+    
+    public boolean upisiOcenuFilma(int id, double ocena) {
+    	try {
+	    	Film film = em.find(Film.class, id);
+	    	int brPutaOcenjen = film.getBrPutaOcenjen();
+	    	film.setBrPutaOcenjen(brPutaOcenjen + 1);
+	    	film.setOcena(Math.round(((brPutaOcenjen * film.getOcena() + ocena) / (brPutaOcenjen + 1)) * 10.0) / 10.0);
+	    	em.persist(film);
+	    	return true;
+    	} catch(Exception e) {
+    		System.out.println(e.getMessage());
+    		return false;
+    	}
+    }
+
+	@Override
+	public List<Film> izlistajFilmovePoOceni() {
+		return em.createQuery("SELECT f FROM Film f ORDER BY f.ocena DESC", Film.class).getResultList();
+	}
 
 }

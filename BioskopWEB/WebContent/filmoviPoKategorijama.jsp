@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,15 +20,9 @@
 
 							<div class="card-media">
 								<img
-									src="https://ia.media-imdb.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
-									alt="cover" alt="" class="card-media-img" />
-								<div class="card-media-preview u-flex-center">
-									<svg fill="#ffffff" height="18" viewBox="0 0 24 24" width="18"
-										xmlns="http://www.w3.org/2000/svg"> <path
-										d="M8 5v14l11-7z" /> <path d="M0 0h24v24H0z" fill="none" />
-									</svg>
-								</div>
-								<span class="card-media-tag card-media-tag-orange">${item.zanr}</span>
+									src="${item.poster }"
+									alt="cover" alt="" class="card-media-img" /> <span
+									class="card-media-tag card-media-tag-orange">${item.zanr}</span>
 							</div>
 
 							<div class="card-body">
@@ -70,18 +65,35 @@
 											d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z" />
 										<path d="M0 0h18v18H0z" fill="none" /> </svg></li>
 								</ul>
-								<a href="${item.linkTrejlera }" class="card-button card-button-cta">
-									${item.linkTrejlera } </a>
+								<a href="${item.linkTrejlera }"
+									class="card-button card-button-cta"> ${item.linkTrejlera }
+									<svg fill="#ffffff" height="18" viewBox="0 0 24 24" width="18"
+										xmlns="http://www.w3.org/2000/svg"> <path
+										d="M8 5v14l11-7z" /> <path d="M0 0h24v24H0z" fill="none" />
+									</svg>
+								</a>
 								<!-- Napraviti da bude dinamicki -->
 								<a href="/BioskopWEB/FilmoviServlet"
-									class="card-button card-button-link"> ${item.opis }<span
-									class="card-button-icon"> <svg fill="#9C948A"
+									class="card-button card-button-link"> 
+									<c:set var="splitovanOpis" value="${fn:split(item.opis, ' ')}" />
+									<c:set var="stop" value="0"/>
+									<p>
+									<c:forEach items="${splitovanOpis }" var="opis">
+										<c:set var="stop" value="${stop + 1 }"/>
+										<c:if test="${stop < 15 }">
+											${opis }
+										</c:if>
+									</c:forEach>
+									...
+									
+								<span class="card-button-icon"> <svg fill="#9C948A"
 											height="16" viewBox="0 0 24 24" width="16"
 											xmlns="http://www.w3.org/2000/svg"> <path
 											d="M0 0h24v24H0z" fill="none" /> <path
 											d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
 										</svg>
 								</span>
+								</p>
 								</a>
 							</div>
 

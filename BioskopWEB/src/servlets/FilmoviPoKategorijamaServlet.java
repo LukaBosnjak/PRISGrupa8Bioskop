@@ -35,8 +35,9 @@ public class FilmoviPoKategorijamaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Film> filmoviPoZanru = fbr.izlistajFilmovePoZanru("Akcija"/*request.getParameter("zanr")*/);
-		request.setAttribute("filmoviPoKategoriji", filmoviPoZanru);
+//		List<Film> filmoviPoZanru = fbr.izlistajFilmovePoZanru("Akcija"/*request.getParameter("zanr")*/);
+		List<Film> filmoviPoOceni = fbr.izlistajFilmovePoOceni();
+		request.setAttribute("filmoviPoKategoriji", filmoviPoOceni);
 		request.getRequestDispatcher("filmoviPoKategorijama.jsp").forward(request, response);
 	}
 
