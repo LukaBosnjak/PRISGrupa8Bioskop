@@ -2,7 +2,8 @@ package beans;
 
 
 
-import java.util.Date;
+
+
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -11,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import model.Film;
+import model.Karta;
 import model.Komentar;
 import model.Korisnik;
 
@@ -84,6 +86,29 @@ public class BioskopBean implements BioskopBeanRemote {
 		}
 	}
 	
+	public boolean rezervisi(Date datum, Karta karta){
+		try{
+			Sala s=new Sala();
+			int brojMesta=s.getBrMesta();
+			if(brojMesta>0){
+				Rezervacije rez=new Rezervacije();
+				rez.setDatum(datum);
+				rez.addKarta(karta);
+				rez.setKorisnik(ulogovan);
+				brojMesta--;
+				em.persist(rez);
+				return true;
+			}else{
+				System.out.println("Nema mesta");
+				return false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
 	@Override
 	public Film getFilmZaNaziv(String naziv) {
 		try {
@@ -98,5 +123,21 @@ public class BioskopBean implements BioskopBeanRemote {
 			return null;
 		}
 	}
+	
+	public Karta getKarta(Date datum){
+		try{
+			Query q = em.createQuery("SELECT k FROM Karta k WHERE k.datum=:d");
+			q.setParameter("d", datum);
+			Karta k=(Karta) q.getSingleResult();
+    		return k;
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	
 
 }
