@@ -124,7 +124,7 @@ public class BioskopBean implements BioskopBeanRemote {
 		}
 	}
 	
-	public Karta getKarta(Date datum){
+	public Karta getKartaZaDatum(Date datum){
 		try{
 			Query q = em.createQuery("SELECT k FROM Karta k WHERE k.datum=:d");
 			q.setParameter("d", datum);
