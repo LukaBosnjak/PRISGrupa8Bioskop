@@ -52,7 +52,7 @@ a:hover {
   overflow: hidden;
   top:0; left:0;
   background:red;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
+  background: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/movie-theater-popcorn-background-1.jpg");
   z-index:-1;
  
   transform: skewY(-2.2deg);
@@ -214,7 +214,7 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
-//tooltip stuff via: https://codepen.io/peiche/pen/JaftA
+/*tooltip stuff via: https://codepen.io/peiche/pen/JaftA*/
 
 a[data-tooltip] {
   position: relative;
