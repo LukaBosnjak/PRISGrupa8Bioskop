@@ -15,4 +15,6 @@ public interface AdministratorBeanRemote {
 	public Film getFilmZaNaziv(String naziv);
 	
 	public Sala getSalaZaBrSale(int brSale);
+	
+	public double profitUPeriodu(Date fromDate, Date toDate);
 }

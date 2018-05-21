@@ -52,8 +52,9 @@ a:hover {
   overflow: hidden;
   top:0; left:0;
   background:red;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_bg.jpg");
+  background: url("https://i1.wp.com/infosvencionys.lt/wp-content/uploads/2016/07/Movie-time-design-elements-vector-backgrounds-02.jpg?resize=500%2C321");
   z-index:-1;
+  background-repeat:no-repeat;
  
   transform: skewY(-2.2deg);
   transform-origin:0 0;
