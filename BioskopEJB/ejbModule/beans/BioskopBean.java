@@ -5,6 +5,8 @@ package beans;
 
 
 
+import java.util.Date;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -15,6 +17,8 @@ import model.Film;
 import model.Karta;
 import model.Komentar;
 import model.Korisnik;
+import model.Rezervacije;
+import model.Sala;
 
 
 /**
