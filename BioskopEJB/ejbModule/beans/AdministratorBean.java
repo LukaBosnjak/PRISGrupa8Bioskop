@@ -81,7 +81,8 @@ public class AdministratorBean implements AdministratorBeanRemote {
 			Query q = em.createQuery("SELECT SUM(k.cena) FROM Karta k WHERE k.datum BETWEEN :from AND :to");
 			q.setParameter("from", fromDate);
 			q.setParameter("to", toDate);
-			double rez = q.getFirstResult();
+			double rez = (double)q.getResultList().get(0);
+			System.out.println(rez);
 			return rez;
 		}catch(Exception e) {
 			e.printStackTrace();

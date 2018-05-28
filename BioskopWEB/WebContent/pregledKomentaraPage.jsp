@@ -5,32 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Komentarisi film</title>
+<title>Pregled komentara za film</title>
 </head>
 <body>
-	
-	<form action="/BioskopWEB/KomentarServlet" method="get">
+
+	<form action="/BioskopWEB/PrikazKomentaraServlet" method="post">
 		<input type="submit" value="Ucitaj filmove">
 	</form>
 	
 	<br>
-
-	<form action="/BioskopWEB/KomentarServlet" method="post">
-		Film: <select name="film">
-			<c:forEach items="${sviFilmovi}" var="f">
+	
+	<form action="/BioskopWEB/PrikazKomentaraServlet" method="get">
+		Odaberite film:<select name="film">
+			<c:forEach items="${sviKomentarisaniFilmovi}" var="f">
 				<option value="${f.naziv}">${f.naziv }</option>
 			</c:forEach>
 		</select><br>
-		<!-- Film: <input type="text" name="film"/><br>-->
-		Komentar: <textarea rows="10" cols="30" name="komentar"></textarea><br>
-		<input type="submit" value="Comment"/>
+		<input type="submit" value="Prikazi komentare"/>
 	</form>
 	
 	<br>
 	
-	${porukaComment}
+	<h3>Komentari:</h3>
+	<hr>
 	
-	<a href="/BioskopWEB/userPage.jsp">Nazad</a>
+	<table>
+		<c:forEach items="${komentari}" var="k">
+			<tr>
+				<td>${k.korisnik.username }:</td>
+				<td>${k.tekst }</td>
+			</tr>
+		</c:forEach>	
+	</table>
 
 </body>
 </html>

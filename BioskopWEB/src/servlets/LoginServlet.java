@@ -51,6 +51,9 @@ public class LoginServlet extends HttpServlet {
 		if (ulogovan.getRola().equalsIgnoreCase("korisnik")) {
 			request.getRequestDispatcher("/userPage.jsp").forward(request, response);
 		}
+		if (ulogovan.getRola().equalsIgnoreCase("radnik")) {
+			request.getRequestDispatcher("/radnikPage.jsp").forward(request, response);
+		}
 		//request.getRequestDispatcher("/indexLoggedIn.jsp").forward(request, response);
 	}
 
