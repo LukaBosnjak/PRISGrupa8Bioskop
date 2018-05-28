@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -9,23 +12,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.BioskopBeanRemote;
-import model.Korisnik;
+import beans.AdministratorBeanRemote;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class PregledProfitaServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/PregledProfitaServlet")
+public class PregledProfitaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private BioskopBeanRemote bbr;
+	AdministratorBeanRemote abr;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public PregledProfitaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +36,26 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String user = request.getParameter("username");
-		String password = request.getParameter("password");
 		
-		Korisnik ulogovan = bbr.login(user, password);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date datumOd = new Date();
+		Date datumDo = new Date();
 		
-		if (ulogovan != null) {
-			request.getSession().setAttribute("user", ulogovan);
+		try {
+			datumOd = sdf.parse(request.getParameter("datumOd"));
+			datumDo = sdf.parse(request.getParameter("datumDo"));
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
-		if (ulogovan.getRola().equalsIgnoreCase("admin")) {
-			request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
-		}
+		double profit = abr.profitUPeriodu(datumOd, datumDo);
 		
-		if (ulogovan.getRola().equalsIgnoreCase("korisnik")) {
-			request.getRequestDispatcher("/userPage.jsp").forward(request, response);
-		}
-		if (ulogovan.getRola().equalsIgnoreCase("radnik")) {
-			request.getRequestDispatcher("/radnikPage.jsp").forward(request, response);
-		}
-		//request.getRequestDispatcher("/indexLoggedIn.jsp").forward(request, response);
+		String porukaProfit = "Vas profit u period od "+datumOd+" do "+datumDo+" je: "+profit;
+		
+		request.getSession().setAttribute("porukaProfit", porukaProfit);
+		
+		request.getRequestDispatcher("/profitPage.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -74,4 +74,21 @@ public class AdministratorBean implements AdministratorBeanRemote {
 		}
 	}
 
+	@Override
+	public double profitUPeriodu(Date fromDate, Date toDate) {
+		
+		try {
+			Query q = em.createQuery("SELECT SUM(k.cena) FROM Karta k WHERE k.datum BETWEEN :from AND :to");
+			q.setParameter("from", fromDate);
+			q.setParameter("to", toDate);
+			double rez = (double)q.getResultList().get(0);
+			System.out.println(rez);
+			return rez;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
+
 }

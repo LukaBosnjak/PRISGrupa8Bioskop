@@ -18,6 +18,8 @@ public class Korisnik implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idKorisnika;
 
+	private int karta_idKarte;
+
 	private String password;
 
 	private String rola;
@@ -44,6 +46,14 @@ public class Korisnik implements Serializable {
 
 	public void setIdKorisnika(int idKorisnika) {
 		this.idKorisnika = idKorisnika;
+	}
+
+	public int getKarta_idKarte() {
+		return this.karta_idKarte;
+	}
+
+	public void setKarta_idKarte(int karta_idKarte) {
+		this.karta_idKarte = karta_idKarte;
 	}
 
 	public String getPassword() {

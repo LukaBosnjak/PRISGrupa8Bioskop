@@ -6,6 +6,10 @@ package beans;
 
 
 import java.util.Date;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> e23410b291ec19bde23d6be0f3a8a51b6635a1d6
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
@@ -97,7 +101,7 @@ public class BioskopBean implements BioskopBeanRemote {
 			if(brojMesta>0){
 				Rezervacije rez=new Rezervacije();
 				rez.setDatum(datum);
-				rez.addKarta(karta);
+				rez.setKarta(karta);
 				rez.setKorisnik(ulogovan);
 				brojMesta--;
 				em.persist(rez);
@@ -140,6 +144,29 @@ public class BioskopBean implements BioskopBeanRemote {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public List<Film> getSviFilmovi() {
+		try {
+			Query q = em.createQuery("SELECT f from Film f");
+			return q.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Komentar> getKomentariZaFilm(Film f) {
+		try {
+			Query q = em.createQuery("SELECT k FROM Komentar k WHERE k.film=:f");
+			q.setParameter("f", f);
+			return q.getResultList();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	

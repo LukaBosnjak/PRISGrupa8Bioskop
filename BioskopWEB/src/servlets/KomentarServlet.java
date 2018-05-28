@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -37,8 +38,9 @@ public class KomentarServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<Film> sviFilmovi = bbr.getSviFilmovi();
+		request.setAttribute("sviFilmovi", sviFilmovi);
+		request.getRequestDispatcher("/commentForm.jsp").forward(request, response);
 	}
 
 	/**

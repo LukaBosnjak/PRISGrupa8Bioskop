@@ -19,6 +19,8 @@ public class Projekcija implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idProjekcije;
 
+	private double cena;
+
 	@Temporal(TemporalType.DATE)
 	private Date datum;
 
@@ -45,6 +47,14 @@ public class Projekcija implements Serializable {
 
 	public void setIdProjekcije(int idProjekcije) {
 		this.idProjekcije = idProjekcije;
+	}
+
+	public double getCena() {
+		return this.cena;
+	}
+
+	public void setCena(double cena) {
+		this.cena = cena;
 	}
 
 	public Date getDatum() {

@@ -8,7 +8,8 @@
 </head>
 <body>
 
-	<a href="/BioskopWEB/unosRepertoaraPage.jsp">Unos repertoara</a>
+	<a href="/BioskopWEB/unosRepertoaraPage.jsp">Unos repertoara</a> <br>
+	<a href="/BioskopWEB/profitPage.jsp">Pregled profita za odredjeni period</a>
 
 </body>
 </html>

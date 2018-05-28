@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -28,8 +29,8 @@ public class Karta implements Serializable {
 	private Projekcija projekcija;
 
 	//bi-directional many-to-one association to Rezervacije
-	@ManyToOne
-	private Rezervacije rezervacije;
+	@OneToMany(mappedBy="karta")
+	private List<Rezervacije> rezervacijes;
 
 	public Karta() {
 	}
@@ -66,12 +67,26 @@ public class Karta implements Serializable {
 		this.projekcija = projekcija;
 	}
 
-	public Rezervacije getRezervacije() {
-		return this.rezervacije;
+	public List<Rezervacije> getRezervacijes() {
+		return this.rezervacijes;
 	}
 
-	public void setRezervacije(Rezervacije rezervacije) {
-		this.rezervacije = rezervacije;
+	public void setRezervacijes(List<Rezervacije> rezervacijes) {
+		this.rezervacijes = rezervacijes;
+	}
+
+	public Rezervacije addRezervacije(Rezervacije rezervacije) {
+		getRezervacijes().add(rezervacije);
+		rezervacije.setKarta(this);
+
+		return rezervacije;
+	}
+
+	public Rezervacije removeRezervacije(Rezervacije rezervacije) {
+		getRezervacijes().remove(rezervacije);
+		rezervacije.setKarta(null);
+
+		return rezervacije;
 	}
 
 }

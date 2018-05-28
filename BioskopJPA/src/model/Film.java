@@ -2,10 +2,11 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
- * The persistent class for the film database table.
+ * The persistent class for the Film database table.
  * 
  */
 @Entity
@@ -32,6 +33,14 @@ public class Film implements Serializable {
 	private String uloge;
 
 	private String zanr;
+
+	//bi-directional many-to-one association to Komentar
+	@OneToMany(mappedBy="film")
+	private List<Komentar> komentars;
+
+	//bi-directional many-to-one association to Projekcija
+	@OneToMany(mappedBy="film")
+	private List<Projekcija> projekcijas;
 
 	public Film() {
 	}
@@ -106,6 +115,50 @@ public class Film implements Serializable {
 
 	public void setZanr(String zanr) {
 		this.zanr = zanr;
+	}
+
+	public List<Komentar> getKomentars() {
+		return this.komentars;
+	}
+
+	public void setKomentars(List<Komentar> komentars) {
+		this.komentars = komentars;
+	}
+
+	public Komentar addKomentar(Komentar komentar) {
+		getKomentars().add(komentar);
+		komentar.setFilm(this);
+
+		return komentar;
+	}
+
+	public Komentar removeKomentar(Komentar komentar) {
+		getKomentars().remove(komentar);
+		komentar.setFilm(null);
+
+		return komentar;
+	}
+
+	public List<Projekcija> getProjekcijas() {
+		return this.projekcijas;
+	}
+
+	public void setProjekcijas(List<Projekcija> projekcijas) {
+		this.projekcijas = projekcijas;
+	}
+
+	public Projekcija addProjekcija(Projekcija projekcija) {
+		getProjekcijas().add(projekcija);
+		projekcija.setFilm(this);
+
+		return projekcija;
+	}
+
+	public Projekcija removeProjekcija(Projekcija projekcija) {
+		getProjekcijas().remove(projekcija);
+		projekcija.setFilm(null);
+
+		return projekcija;
 	}
 
 }
