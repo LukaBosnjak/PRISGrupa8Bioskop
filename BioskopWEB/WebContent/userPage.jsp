@@ -13,7 +13,14 @@
 	<a href="/BioskopWEB/commentForm.jsp">Komentarisi film</a><br>
 	<a href="/BioskopWEB/FilmoviServlet">Film</a><br>
 	<a href="/BioskopWEB/FilmoviPoKategorijamaServlet">Zanr</a><br>
-	<a href="/BioskopWEB/pregledKomentaraPage.jsp">Prikaz komentara za film</a>
+	<a href="/BioskopWEB/pregledKomentaraPage.jsp">Prikaz komentara za film</a><br>
+	<a href="/BioskopWEB/RezevrvacijaKarte">Rezervacija karte</a>
+	
+	<br>
+	
+	<form action="/BioskopWEB/LogOutServlet" method="get">
+		<input type="submit" value="Log out"/>
+	</form>
 	
 </body>
 </html>

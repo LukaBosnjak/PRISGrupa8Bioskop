@@ -11,6 +11,12 @@
 	Ulogovani ste kao: ${user.username}<br>
 
 	<a href="/BioskopWEB/ProdajaKarteServlet">Prodaja</a>
+	
+	<br>
+	
+	<form action="/BioskopWEB/LogOutServlet" method="get">
+		<input type="submit" value="Log out"/>
+	</form>
 
 </body>
 </html>

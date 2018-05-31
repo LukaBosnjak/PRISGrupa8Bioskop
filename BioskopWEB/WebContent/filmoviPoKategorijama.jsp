@@ -73,6 +73,7 @@
 									</svg>
 								</a>
 								<!-- Napraviti da bude dinamicki -->
+								<input type="hidden" name="idFilma" value="${item.idFilma}"/>
 								<a href="/BioskopWEB/FilmoviServlet"
 									class="card-button card-button-link"> 
 									<c:set var="splitovanOpis" value="${fn:split(item.opis, ' ')}" />

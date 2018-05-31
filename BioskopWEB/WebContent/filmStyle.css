@@ -42,6 +42,7 @@ a:hover {
   z-index:1;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  
     
 }
 
@@ -51,12 +52,10 @@ a:hover {
   position:absolute;
   overflow: hidden;
   top:0; left:0;
-  background:red;
-<<<<<<< HEAD
-  background: url("https://i1.wp.com/infosvencionys.lt/wp-content/uploads/2016/07/Movie-time-design-elements-vector-backgrounds-02.jpg?resize=500%2C321");
-=======
-  background: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/movie-theater-popcorn-background-1.jpg");
->>>>>>> 0f01cc394ad7fbfb347fcf7a1ea94cc744d401cd
+  background:blue;
+
+  /*  background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/movie-theater-popcorn-background-1.jpg");*/
+
   z-index:-1;
   background-repeat:no-repeat;
  
@@ -92,7 +91,7 @@ a:hover {
       margin-left: 12px;
       background: #C4AF3D;
       border-radius: 5px;
-      color: #544C21;
+      color: black;
       font-size: 14px;
       padding: 0px 4px;
       

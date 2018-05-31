@@ -19,5 +19,6 @@ public interface BioskopBeanRemote {
 	public Film getFilmZaNaziv(String naziv);
 	public List<Film> getSviFilmovi();
 	public List<Komentar> getKomentariZaFilm(Film f);
-	public boolean rezervisi(Date datum, Projekcija projekcija);
+	public boolean rezervisi(Korisnik k, int idProjekcije);
+	public List<Projekcija> getProjekcije();
 }

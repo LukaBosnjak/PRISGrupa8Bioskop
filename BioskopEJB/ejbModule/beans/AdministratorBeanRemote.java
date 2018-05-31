@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.ejb.Remote;
 
 import model.Film;
+import model.Korisnik;
+import model.Projekcija;
 import model.Sala;
 
 @Remote
@@ -17,4 +19,6 @@ public interface AdministratorBeanRemote {
 	public Sala getSalaZaBrSale(int brSale);
 	
 	public double profitUPeriodu(Date fromDate, Date toDate);
+	
+	
 }

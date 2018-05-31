@@ -10,6 +10,12 @@
 
 	<a href="/BioskopWEB/unosRepertoaraPage.jsp">Unos repertoara</a> <br>
 	<a href="/BioskopWEB/profitPage.jsp">Pregled profita za odredjeni period</a>
+	
+	<br>
+	
+	<form action="/BioskopWEB/LogOutServlet" method="get">
+		<input type="submit" value="Log out"/>
+	</form>
 
 </body>
 </html>

@@ -15,7 +15,6 @@ import model.Komentar;
 import model.Korisnik;
 import model.Projekcija;
 import model.Rezervacije;
-import model.Sala;
 
 
 /**
@@ -87,7 +86,7 @@ public class BioskopBean implements BioskopBeanRemote {
 		}
 	}
 	
-	public boolean rezervisi(Date datum, Projekcija projekcija){
+	/*public boolean rezervisi(Date datum, Projekcija projekcija){
 		try{
 			Sala s=new Sala();
 			int brojMesta=s.getBrMesta();
@@ -107,7 +106,7 @@ public class BioskopBean implements BioskopBeanRemote {
 			e.printStackTrace();
 			return false;
 		}
-	}
+	}*/
 
 	
 	@Override
@@ -157,6 +156,27 @@ public class BioskopBean implements BioskopBeanRemote {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public boolean rezervisi(Korisnik k, int idProjekcije) {
+		try {
+			Projekcija p = em.find(Projekcija.class, idProjekcije);
+			Rezervacije r = new Rezervacije();
+			r.setKorisnik(k);
+			r.setDatum(new Date());
+			r.setProjekcija(p);
+			r.setIsProdata(false);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	@Override
+	public List<Projekcija> getProjekcije() {
+		return em.createNamedQuery("Projekcija.findAll", Projekcija.class).getResultList();
 	}
 
 }

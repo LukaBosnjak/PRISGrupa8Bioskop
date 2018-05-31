@@ -34,7 +34,7 @@ public class FilmoviServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Film film = fbr.nadijFilm(2/*Integer.parseInt(request.getParameter("idFilma"))*/);
+		Film film = fbr.nadijFilm(2);//Integer.parseInt(request.getParameter("idFilma")));
 		request.setAttribute("movieTrailer", film.getLinkTrejlera());
 		request.setAttribute("movieTitle", film.getNaziv());
 		request.setAttribute("roles", film.getUloge());
