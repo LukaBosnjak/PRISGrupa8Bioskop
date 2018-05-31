@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Korisnik database table.
+ * The persistent class for the korisnik database table.
  * 
  */
 @Entity
@@ -18,8 +18,6 @@ public class Korisnik implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idKorisnika;
 
-	private int karta_idKarte;
-
 	private String password;
 
 	private String rola;
@@ -28,6 +26,10 @@ public class Korisnik implements Serializable {
 	private byte[] slika;
 
 	private String username;
+
+	//bi-directional many-to-one association to Karta
+	@OneToMany(mappedBy="korisnik")
+	private List<Karta> kartas;
 
 	//bi-directional many-to-one association to Komentar
 	@OneToMany(mappedBy="korisnik")
@@ -46,14 +48,6 @@ public class Korisnik implements Serializable {
 
 	public void setIdKorisnika(int idKorisnika) {
 		this.idKorisnika = idKorisnika;
-	}
-
-	public int getKarta_idKarte() {
-		return this.karta_idKarte;
-	}
-
-	public void setKarta_idKarte(int karta_idKarte) {
-		this.karta_idKarte = karta_idKarte;
 	}
 
 	public String getPassword() {
@@ -86,6 +80,28 @@ public class Korisnik implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public List<Karta> getKartas() {
+		return this.kartas;
+	}
+
+	public void setKartas(List<Karta> kartas) {
+		this.kartas = kartas;
+	}
+
+	public Karta addKarta(Karta karta) {
+		getKartas().add(karta);
+		karta.setKorisnik(this);
+
+		return karta;
+	}
+
+	public Karta removeKarta(Karta karta) {
+		getKartas().remove(karta);
+		karta.setKorisnik(null);
+
+		return karta;
 	}
 
 	public List<Komentar> getKomentars() {

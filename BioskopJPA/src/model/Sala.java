@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Sala database table.
+ * The persistent class for the sala database table.
  * 
  */
 @Entity

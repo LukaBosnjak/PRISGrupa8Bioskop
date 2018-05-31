@@ -3,11 +3,10 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 /**
- * The persistent class for the Karta database table.
+ * The persistent class for the karta database table.
  * 
  */
 @Entity
@@ -24,13 +23,18 @@ public class Karta implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date datum;
 
+	//bi-directional many-to-one association to Korisnik
+	@ManyToOne
+	@JoinColumn(name="korisnik_idKorisnik")
+	private Korisnik korisnik;
+
 	//bi-directional many-to-one association to Projekcija
 	@ManyToOne
 	private Projekcija projekcija;
 
 	//bi-directional many-to-one association to Rezervacije
-	@OneToMany(mappedBy="karta")
-	private List<Rezervacije> rezervacijes;
+	@ManyToOne
+	private Rezervacije rezervacije;
 
 	public Karta() {
 	}
@@ -59,6 +63,14 @@ public class Karta implements Serializable {
 		this.datum = datum;
 	}
 
+	public Korisnik getKorisnik() {
+		return this.korisnik;
+	}
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+
 	public Projekcija getProjekcija() {
 		return this.projekcija;
 	}
@@ -67,26 +79,12 @@ public class Karta implements Serializable {
 		this.projekcija = projekcija;
 	}
 
-	public List<Rezervacije> getRezervacijes() {
-		return this.rezervacijes;
+	public Rezervacije getRezervacije() {
+		return this.rezervacije;
 	}
 
-	public void setRezervacijes(List<Rezervacije> rezervacijes) {
-		this.rezervacijes = rezervacijes;
-	}
-
-	public Rezervacije addRezervacije(Rezervacije rezervacije) {
-		getRezervacijes().add(rezervacije);
-		rezervacije.setKarta(this);
-
-		return rezervacije;
-	}
-
-	public Rezervacije removeRezervacije(Rezervacije rezervacije) {
-		getRezervacijes().remove(rezervacije);
-		rezervacije.setKarta(null);
-
-		return rezervacije;
+	public void setRezervacije(Rezervacije rezervacije) {
+		this.rezervacije = rezervacije;
 	}
 
 }

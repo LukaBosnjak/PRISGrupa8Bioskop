@@ -11,6 +11,7 @@
 	<form action="/BioskopWEB/ProdajaKarteServlet" method="POST">
 		<input type="Submit" value="Prodaj Kartu"/>
 	</form>
+	${successMessage}
 	<c:choose>
 		<c:when test="${not empty rezervacije}">
 			<table>

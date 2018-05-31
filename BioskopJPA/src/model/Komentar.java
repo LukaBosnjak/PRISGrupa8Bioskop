@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Komentar database table.
+ * The persistent class for the komentar database table.
  * 
  */
 @Entity

@@ -8,6 +8,7 @@ import javax.ejb.Remote;
 import model.Film;
 import model.Komentar;
 import model.Korisnik;
+import model.Projekcija;
 
 @Remote
 public interface BioskopBeanRemote {
@@ -18,5 +19,5 @@ public interface BioskopBeanRemote {
 	public Film getFilmZaNaziv(String naziv);
 	public List<Film> getSviFilmovi();
 	public List<Komentar> getKomentariZaFilm(Film f);
-	
+	public boolean rezervisi(Date datum, Projekcija projekcija);
 }

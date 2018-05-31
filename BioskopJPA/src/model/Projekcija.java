@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Projekcija database table.
+ * The persistent class for the projekcija database table.
  * 
  */
 @Entity
@@ -37,6 +37,10 @@ public class Projekcija implements Serializable {
 	//bi-directional many-to-one association to Sala
 	@ManyToOne
 	private Sala sala;
+
+	//bi-directional many-to-one association to Rezervacije
+	@OneToMany(mappedBy="projekcija")
+	private List<Rezervacije> rezervacijes;
 
 	public Projekcija() {
 	}
@@ -109,6 +113,28 @@ public class Projekcija implements Serializable {
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+	}
+
+	public List<Rezervacije> getRezervacijes() {
+		return this.rezervacijes;
+	}
+
+	public void setRezervacijes(List<Rezervacije> rezervacijes) {
+		this.rezervacijes = rezervacijes;
+	}
+
+	public Rezervacije addRezervacije(Rezervacije rezervacije) {
+		getRezervacijes().add(rezervacije);
+		rezervacije.setProjekcija(this);
+
+		return rezervacije;
+	}
+
+	public Rezervacije removeRezervacije(Rezervacije rezervacije) {
+		getRezervacijes().remove(rezervacije);
+		rezervacije.setProjekcija(null);
+
+		return rezervacije;
 	}
 
 }

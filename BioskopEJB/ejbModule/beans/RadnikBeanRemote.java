@@ -8,5 +8,7 @@ import model.Rezervacije;
 
 @Remote
 public interface RadnikBeanRemote {
-	public List<Rezervacije> getRezervacije();
+	public List<Rezervacije> getRezervacijeZaProjekciju(int idProjekcije);
+	public boolean prodajKartu(int idProjekcije);
+	public boolean prodajRezervisanuKartu(int idProjekcije, int idKorisnika, int idRezervacije);
 }

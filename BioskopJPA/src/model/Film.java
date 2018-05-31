@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the Film database table.
+ * The persistent class for the film database table.
  * 
  */
 @Entity
